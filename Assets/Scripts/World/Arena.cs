@@ -5,43 +5,95 @@ using UnityEngine;
 public class Arena : MonoBehaviour
 {
     [Header("Initial Setup")]
-    [SerializeField] private int _startingObstacles;
-    [SerializeField] private float _leftEdge;
-    [SerializeField] private float _rightEdge;
-    [SerializeField] private float _topEdge;
-    [SerializeField] private float _bottomEdge;
+    [SerializeField] private int _startingObstacles = 10;
+    [SerializeField] private float _leftEdge = -9f;
+    [SerializeField] private float _rightEdge = 9f;
+    [SerializeField] private float _topEdge = -5f;
+    [SerializeField] private float _bottomEdge = 5f;
 
     [Header("General Obstacle Variables")]
-    [SerializeField] private float _minDistBetweenObstacles;
+    [SerializeField] private float _minDistBetweenObstacles = 0.5f;
     [SerializeField] private int _maxPlacementAttempts = 100;
+    [SerializeField] [Range(0, 1)] private float _specialObstacleChance = 0f;
     private List<Obstacle> _obstacles;
 
     [Header("Fixed Block Obstacle")]
     [SerializeField] private GameObject _blockPrefab;
-    [SerializeField] private float _maxBlockSize;
-    [SerializeField] private float _minBlockSize;
+    [SerializeField] private GameObject[] _specialBlocks;
+    [SerializeField] private float _minBlockSize = 0.5f;
+    [SerializeField] private float _maxBlockSize = 3f;
 
     [Header("Fixed Round Obstacle")]
     [SerializeField] private GameObject _roundPrefab;
-    [SerializeField] private float _minRadius;
-    [SerializeField] private float _maxRadius;
+    [SerializeField] private GameObject[] _specialRounds;
+    [SerializeField] private float _minDiameter = 0.5f;
+    [SerializeField] private float _maxDiameter = 3f;
 
     private void Start()
     {
         _obstacles = new List<Obstacle>();
 
         for (int i = 0; i < _startingObstacles; i++)
-            AddNewBlockObstacle();
+            AddNormalObstacle();
     }
 
-    public void AddNewBlockObstacle()
+    public void AddNewObstacle()
+    {
+        float rand = Random.value;
+
+        if (rand < _specialObstacleChance)
+            AddSpecialObstacle();
+        else
+            AddNormalObstacle();
+    }
+
+    private void AddSpecialObstacle()
+    {
+        if (_specialBlocks.Length == 0 && _specialRounds.Length == 0)
+        {
+            AddNormalObstacle();
+            return;
+        }
+
+        int i = Random.Range(0, _specialRounds.Length + _specialBlocks.Length);
+        bool isRound = i > _specialBlocks.Length;
+        GameObject prefab = isRound ?
+            _specialRounds[i - _specialBlocks.Length] : 
+            _specialBlocks[i];
+
+        if (isRound)
+            AddNewRoundObstacle(prefab);
+        else
+            AddNewBlockObstacle(prefab);
+    }
+
+    private void AddNormalObstacle()
+    {
+        float rand = Random.value;
+        if (rand > 0.5f)
+            AddNewRoundObstacle(_roundPrefab);
+        else
+            AddNewBlockObstacle(_blockPrefab);
+    }
+
+    private void AddNewRoundObstacle(GameObject prefab)
+    {
+        var diameter = Random.Range(_minDiameter, _maxDiameter);
+        var newObstacle = new Obstacle(Vector2.zero, diameter / 2f);
+        PlaceNewObstacle(newObstacle, prefab, Vector2.one * diameter);
+    }
+
+    private void AddNewBlockObstacle(GameObject prefab)
     {
         var size = new Vector2(
             Random.Range(_minBlockSize, _maxBlockSize), 
             Random.Range(_minBlockSize, _maxBlockSize));
-
         var newObstacle = new Obstacle(Vector2.zero, size);
+        PlaceNewObstacle(newObstacle, prefab, size);
+    }
 
+    private void PlaceNewObstacle(Obstacle newObstacle, GameObject prefab, Vector2 size)
+    {
         int placementAttempts = 0;
         while (true)
         {
@@ -58,7 +110,7 @@ public class Arena : MonoBehaviour
                 return;
         }
 
-        var blockObj = Instantiate(_blockPrefab, newObstacle.Data.Center, Quaternion.identity);
+        var blockObj = Instantiate(prefab, newObstacle.Data.Center, Quaternion.identity);
         blockObj.transform.localScale = new Vector3(size.x, size.y, 1);
         _obstacles.Add(newObstacle);
     }
