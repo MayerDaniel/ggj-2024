@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - robot_joint
+  - robot_arm
+  - robot_torso
+  - robot_leg
   - 
   - 
   - 
