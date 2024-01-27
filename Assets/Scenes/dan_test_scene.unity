@@ -944,7 +944,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!233 &364137744
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 259
 --- !u!50 &364137745
 Rigidbody2D:
   serializedVersion: 4
@@ -1470,7 +1470,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!233 &470823486
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -1495,7 +1495,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!50 &470823487
 Rigidbody2D:
   serializedVersion: 4
@@ -2626,7 +2626,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!233 &1256170291
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -2651,7 +2651,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!50 &1256170292
 Rigidbody2D:
   serializedVersion: 4
@@ -3152,7 +3152,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!233 &1779843300
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -3177,7 +3177,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 90
+    m_UpperAngle: 359
 --- !u!50 &1779843301
 Rigidbody2D:
   serializedVersion: 4
@@ -3329,6 +3329,8 @@ GameObject:
   - component: {fileID: 1787121067}
   - component: {fileID: 1787121066}
   - component: {fileID: 1787121065}
+  - component: {fileID: 1787121069}
+  - component: {fileID: 1787121070}
   m_Layer: 9
   m_Name: lower_leg_left
   m_TagString: Untagged
@@ -3475,6 +3477,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787121069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787121064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &1787121070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787121064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc03c214163c45959d723022e045e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foot: {fileID: 1787121065}
 --- !u!1 &1808774203
 GameObject:
   m_ObjectHideFlags: 0
