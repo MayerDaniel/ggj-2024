@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Arena : MonoBehaviour
 {
+    [Header("External Objects")]
+    [SerializeField] private Transform _voltron;
+    [SerializeField] private float _voltronRadius;
+    [SerializeField] private Transform _goal;
+    private Obstacle _voltronObstacle;
+
     [Header("Initial Setup")]
     [SerializeField] private int _startingObstacles = 10;
     [SerializeField] private float _leftEdge = -9f;
@@ -31,10 +37,14 @@ public class Arena : MonoBehaviour
 
     private void Start()
     {
+        _voltronObstacle = new Obstacle(_voltron.position, _voltronRadius);
         _obstacles = new List<Obstacle>();
 
         for (int i = 0; i < _startingObstacles; i++)
             AddNormalObstacle();
+
+        if (_goal != null)
+            PlaceGoal();
     }
 
     public void AddNewObstacle()
@@ -94,32 +104,44 @@ public class Arena : MonoBehaviour
 
     private void PlaceNewObstacle(Obstacle newObstacle, GameObject prefab, Vector2 size)
     {
-        int placementAttempts = 0;
-        while (true)
-        {
-            var testPoint = new Vector2(
-                Random.Range(_leftEdge, _rightEdge),
-                Random.Range(_bottomEdge, _topEdge));
-            newObstacle.Data.Center = testPoint;
-
-            if (IsPlacementValid(newObstacle))
-                break;
-
-            placementAttempts++;
-            if (placementAttempts >= _maxPlacementAttempts)
-                return;
-        }
+        if (!GetObstaclePos(newObstacle, _minDistBetweenObstacles).HasValue)
+            return;
 
         var blockObj = Instantiate(prefab, newObstacle.Data.Center, Quaternion.identity);
         blockObj.transform.localScale = new Vector3(size.x, size.y, 1);
         _obstacles.Add(newObstacle);
     }
 
-    private bool IsPlacementValid(Obstacle testObstacle)
+    private Vector2? GetObstaclePos(Obstacle obstacle, float minDist)
     {
+        int placementAttempts = 0;
+        while (true)
+        {
+            var testPoint = new Vector2(
+                Random.Range(_leftEdge, _rightEdge),
+                Random.Range(_bottomEdge, _topEdge));
+            obstacle.Data.Center = testPoint;
+
+            if (IsPlacementValid(obstacle, minDist))
+                break;
+
+            placementAttempts++;
+            if (placementAttempts >= _maxPlacementAttempts)
+                return null;
+        }
+
+        return obstacle.Data.Center;
+    }
+
+    private bool IsPlacementValid(Obstacle testObstacle, float minDist)
+    {
+        _voltronObstacle.Data.Center = _voltron.position;
+        if (IsOverlapping(testObstacle, _voltronObstacle, 0))
+            return false;
+
         foreach(var obstacle in _obstacles)
         {
-            if (IsOverlapping(testObstacle, obstacle, _minDistBetweenObstacles))
+            if (IsOverlapping(testObstacle, obstacle, minDist))
                 return false;
         }
 
@@ -199,6 +221,20 @@ public class Arena : MonoBehaviour
 
             var dist = Vector2.Distance(rectClosestPoint, circle.Center);
             return dist - circle.Radius < minDist;
+        }
+    }
+
+    public void PlaceGoal()
+    {
+        Obstacle goalObstacle = new Obstacle(Vector2.zero, _goal.localScale.x);
+
+        while (true)
+        {
+            if (GetObstaclePos(goalObstacle, 0).HasValue)
+            {
+                _goal.position = goalObstacle.Data.Center;
+                return;
+            }
         }
     }
 }
