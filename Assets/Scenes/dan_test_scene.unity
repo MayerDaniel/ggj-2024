@@ -944,7 +944,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!233 &364137744
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!50 &364137745
 Rigidbody2D:
   serializedVersion: 4
@@ -1470,7 +1470,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!233 &470823486
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -1495,7 +1495,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!50 &470823487
 Rigidbody2D:
   serializedVersion: 4
@@ -2626,7 +2626,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!233 &1256170291
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -2651,7 +2651,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!50 &1256170292
 Rigidbody2D:
   serializedVersion: 4
@@ -3152,7 +3152,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!233 &1779843300
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -3177,7 +3177,7 @@ HingeJoint2D:
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_UpperAngle: 90
 --- !u!50 &1779843301
 Rigidbody2D:
   serializedVersion: 4
