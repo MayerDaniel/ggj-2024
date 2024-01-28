@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         playerObject = FindAnyObjectByType<GameManager>().registerPlayer();
         Debug.Log("Player Registered");
         if (playerObject == null)

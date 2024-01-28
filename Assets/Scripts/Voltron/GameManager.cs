@@ -25,14 +25,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Initialize();
+        //Initialize();
     }
 
     void Initialize()
     {
         if (initialized)
             return;
-
+            
         initialized = true;
         objectList.Enqueue(leftHand);
         objectList.Enqueue(rightFoot);
@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (string s in Input.GetJoystickNames())
+        {
+            Debug.Log(s);
+        }
     }
 
     // registers a player when a new controller is plugged in, and returns the position of the 
