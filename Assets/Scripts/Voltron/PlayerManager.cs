@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 
@@ -18,19 +19,24 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player is null :(");
         }
-        StartCoroutine(Update_Co());
+        //StartCoroutine(Update_Co());
+    }
+
+    public void OnMove(InputValue value)
+    {
+        playerObject.callableUpdate(value.Get<Vector3>(), false);
     }
 
     // Update is called once per frame
-    private IEnumerator Update_Co()
-    {
-        while (true)
-        {
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-            Vector3 tempVect = new Vector3(h, v, 0);
-            playerObject.callableUpdate(tempVect, Input.GetButtonDown("Fire1"));
-            yield return null;
-        }
-    }
+    //private IEnumerator Update_Co()
+    //{
+    //    while (true)
+    //    {
+    //        float h = Input.GetAxis("Horizontal");
+    //        float v = Input.GetAxis("Vertical");
+    //        Vector3 tempVect = new Vector3(h, v, 0);
+    //        playerObject.callableUpdate(tempVect, Input.GetButtonDown("Fire1"));
+    //        yield return null;
+    //    }
+    //}
 }
