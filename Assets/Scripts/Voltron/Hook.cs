@@ -7,5 +7,6 @@ public class Hook : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _hookManager.GrabHook();
+        transform.SetParent(collision.gameObject.transform);
     }
 }
