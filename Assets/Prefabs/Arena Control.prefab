@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7747675091912898444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8060987633032842184}
+  - component: {fileID: 4109298330611546824}
+  m_Layer: 0
+  m_Name: Arena Control
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8060987633032842184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747675091912898444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4109298330611546824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747675091912898444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043fbdc31c2626a499ba0b8b020f7e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _voltron: {fileID: 0}
+  _voltronRadius: 5.25
+  _goal: {fileID: 0}
+  _goalSize: 1.4
+  _enemyPrefab: {fileID: 7780375879916779668, guid: 45bb59341f6ef6e469ef7a4219a01374, type: 3}
+  _startingObstacles: 10
+  _leftEdge: -90
+  _rightEdge: 90
+  _topEdge: 100
+  _bottomEdge: 0
+  _minDistBetweenObstacles: 5
+  _maxPlacementAttempts: 100
+  _specialObstacleChance: 0
+  _blockPrefab: {fileID: 2872387533032009170, guid: b37ad633d1da3ba4c8a4820a54d65ab4, type: 3}
+  _specialBlocks: []
+  _minBlockSize: 5
+  _maxBlockSize: 30
+  _roundPrefab: {fileID: 4981036650583509328, guid: 4951146c66bd60d459c204329d832302, type: 3}
+  _specialRounds: []
+  _minDiameter: 5
+  _maxDiameter: 30
+  _timeBetweenEnemySpawns: 15
+  _enemySize: 1
