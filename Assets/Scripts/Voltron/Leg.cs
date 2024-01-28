@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Leg : MonoBehaviour
+public class Leg : Appendage
 {
     [SerializeField]
     Rigidbody2D foot;
@@ -29,13 +29,15 @@ public class Leg : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    override public void callableUpdate(Vector3 vec, bool fire)
     {
+
+        Debug.Log("got to called update");
 
         hipJoints = hip.GetComponents<HingeJoint2D>();
         kneeJoints = knee.GetComponents<HingeJoint2D>();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (fire)
         {
             thrustFlag = !thrustFlag;
         }
@@ -66,8 +68,7 @@ public class Leg : MonoBehaviour
             firstThrustFlag = false;
         } else
         {
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            
 
             foreach (HingeJoint2D j in hipJoints)
             {
@@ -79,8 +80,8 @@ public class Leg : MonoBehaviour
                 j.useLimits = false;
             }
 
-            Vector3 tempVect = new Vector3(h, v, 0);
-            foot.AddForce(tempVect);
+            
+            foot.AddForce(vec);
             firstThrustFlag = true;
 
         }
