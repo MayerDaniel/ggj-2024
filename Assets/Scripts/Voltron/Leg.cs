@@ -9,14 +9,18 @@ public class Leg : MonoBehaviour
     Rigidbody2D foot;
 
     [SerializeField]
-    GameObject pelvis;
+    GameObject hip;
 
     [SerializeField]
-    GameObject thigh;
+    GameObject knee;
 
-    [SerializeField]
-    GameObject calf;
+    public HingeJoint2D[] kneeJoints;
+    public HingeJoint2D[] hipJoints;
 
+    JointAngleLimits2D limits;
+
+    bool thrustFlag = false;
+    bool firstThrustFlag = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,37 +31,58 @@ public class Leg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+
+        hipJoints = hip.GetComponents<HingeJoint2D>();
+        kneeJoints = knee.GetComponents<HingeJoint2D>();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            thrustFlag = !thrustFlag;
+        }
 
-            if (!thigh.TryGetComponent<FixedJoint2D>(out FixedJoint2D thighJoint))
+        if (thrustFlag)
+        {
+
+            if (firstThrustFlag)
             {
-                thigh.AddComponent<FixedJoint2D>();
-                thigh.GetComponent<FixedJoint2D>().connectedBody = pelvis.GetComponent<Rigidbody2D>();
+                foreach (HingeJoint2D j in hipJoints)
+                {
+
+                    limits.max = j.jointAngle + 1;
+                    limits.min = j.jointAngle - 1;
+                    j.limits = limits;
+                    j.useLimits = true;
+                }
+
+                foreach (HingeJoint2D j in kneeJoints)
+                {
+                    limits.max = j.jointAngle + 1;
+                    limits.min = j.jointAngle - 1;
+                    j.limits = limits;
+                    j.useLimits = true;
+                }
             }
-
-            if (!calf.TryGetComponent<FixedJoint2D>(out FixedJoint2D calfJoint))
-            {
-                calf.AddComponent<FixedJoint2D>();
-                calf.GetComponent<FixedJoint2D>().connectedBody = thigh.GetComponent<Rigidbody2D>();
-            }
-
-
-            
-
-            foot.AddRelativeForce(Vector3.forward * 50);
+            foot.AddRelativeForce(Vector3.up * 20);
+            firstThrustFlag = false;
         } else
         {
-            Destroy(thigh.GetComponent<FixedJoint2D>());
-            Destroy(calf.GetComponent<FixedJoint2D>());
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+
+            foreach (HingeJoint2D j in hipJoints)
+            {
+                j.useLimits = false;
+            }
+
+            foreach (HingeJoint2D j in kneeJoints)
+            {
+                j.useLimits = false;
+            }
 
             Vector3 tempVect = new Vector3(h, v, 0);
-            tempVect = tempVect.normalized * 10 * Time.deltaTime;
-            foot.MovePosition(foot.transform.position + tempVect);
+            foot.AddForce(tempVect);
+            firstThrustFlag = true;
+
         }
 
         
