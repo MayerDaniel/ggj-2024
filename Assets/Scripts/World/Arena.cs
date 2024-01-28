@@ -8,6 +8,7 @@ public class Arena : MonoBehaviour
     [SerializeField] private Transform _voltron;
     [SerializeField] private float _voltronRadius;
     [SerializeField] private Transform _goal;
+    [SerializeField] private GameObject _enemyPrefab;
     private Obstacle _voltronObstacle;
 
     [Header("Initial Setup")]
@@ -35,6 +36,10 @@ public class Arena : MonoBehaviour
     [SerializeField] private float _minDiameter = 0.5f;
     [SerializeField] private float _maxDiameter = 3f;
 
+    [Header("OtherGameplay")]
+    [SerializeField] private float _timeBetweenEnemySpawns;
+    [SerializeField] private float _enemySize;
+
     private void Start()
     {
         _voltronObstacle = new Obstacle(_voltron.position, _voltronRadius);
@@ -45,6 +50,8 @@ public class Arena : MonoBehaviour
 
         if (_goal != null)
             PlaceGoal();
+
+        StartCoroutine(EnemySpawn());
     }
 
     public void AddNewObstacle()
@@ -234,6 +241,19 @@ public class Arena : MonoBehaviour
             {
                 _goal.position = goalObstacle.Data.Center;
                 return;
+            }
+        }
+    }
+
+    private IEnumerator EnemySpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeBetweenEnemySpawns);
+            Obstacle enemyObstacle = new Obstacle(Vector2.zero, _enemySize);
+            if (GetObstaclePos(enemyObstacle, 0).HasValue)
+            {
+                var enemy = Instantiate(_enemyPrefab, enemyObstacle.Data.Center, Quaternion.identity);
             }
         }
     }

@@ -16,8 +16,8 @@ TagManager:
   - robot_torso
   - robot_leg
   - grappling_hook
-  - 
-  - 
+  - goal
+  - enemy
   - 
   - 
   - 
