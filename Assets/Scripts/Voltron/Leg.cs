@@ -99,7 +99,7 @@ public class Leg : Appendage
                 j.useLimits = false;
             }
 
-            foot.AddForce(vec * 10);
+            foot.AddForce(vec * 30);
             firstThrustFlag = true;
 
         }

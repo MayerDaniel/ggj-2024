@@ -1269,15 +1269,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39ba9e2b85d134d4c8f135477f5eb3e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58fb6a6446e177a4aaafe072f8caf941, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1501976205850560581
@@ -1611,15 +1611,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39ba9e2b85d134d4c8f135477f5eb3e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58fb6a6446e177a4aaafe072f8caf941, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1705771526886973450
@@ -2108,7 +2108,7 @@ GameObject:
   - component: {fileID: 3822003271739640845}
   - component: {fileID: 4235647638573571906}
   - component: {fileID: 2487326346198478170}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: hand_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4545,7 +4545,7 @@ GameObject:
   - component: {fileID: 5426034717086391927}
   - component: {fileID: 965326951324339483}
   - component: {fileID: 2416863185287278055}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: hand_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

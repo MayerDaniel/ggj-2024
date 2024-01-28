@@ -21,7 +21,7 @@ public class SwordArm : Appendage
     // Leg update - toggleable lock and boost, otherwise move the leg
     override public void callableUpdate(UnityEngine.Vector2 vec, bool fire)
     {
-        hand.AddForce(vec * 10);
+        hand.AddForce(vec * 100);
 
         if (fire)
         {
