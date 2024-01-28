@@ -40,5 +40,7 @@ public class GunSword : MonoBehaviour
             if (child.name.Contains("ook"))
                 child.SetParent(null);
         }
+
+        Destroy(enemy);
     }
 }
