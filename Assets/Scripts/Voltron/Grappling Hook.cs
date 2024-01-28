@@ -24,15 +24,22 @@ public class GrapplingHook : MonoBehaviour
     [Header("Game State")]
     private HookState _state = HookState.Retracted;
 
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if (_state == HookState.Retracted)
-                ShootHook();
-            else
-                RetractHook();
+            OnFirePressed();
         }
+    }
+#endif
+
+    public void OnFirePressed()
+    {
+        if (_state == HookState.Retracted)
+            ShootHook();
+        else
+            RetractHook();
     }
 
     public void ShootHook()
