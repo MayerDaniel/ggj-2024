@@ -8,6 +8,7 @@ public class Arena : MonoBehaviour
     [SerializeField] private Transform _voltron;
     [SerializeField] private float _voltronRadius;
     [SerializeField] private Transform _goal;
+    [SerializeField] private float _goalSize = 1.4f;
     [SerializeField] private GameObject _enemyPrefab;
     private Obstacle _voltronObstacle;
 
@@ -233,7 +234,7 @@ public class Arena : MonoBehaviour
 
     public void PlaceGoal()
     {
-        Obstacle goalObstacle = new Obstacle(Vector2.zero, _goal.localScale.x);
+        Obstacle goalObstacle = new Obstacle(Vector2.zero, _goalSize);
 
         while (true)
         {

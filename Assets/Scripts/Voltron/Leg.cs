@@ -14,6 +14,9 @@ public class Leg : Appendage
     [SerializeField]
     GameObject knee;
 
+    [SerializeField]
+    GameObject boost;
+
     public HingeJoint2D[] kneeJoints;
     public HingeJoint2D[] hipJoints;
 
@@ -22,10 +25,19 @@ public class Leg : Appendage
     bool thrustFlag = false;
     bool firstThrustFlag = true;
 
+    private SpriteRenderer sr;
+
+    private int toggleCount;
+
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private void Awake()
+    {
+        sr = boost.GetComponent<SpriteRenderer>();
     }
 
     // Leg update - toggleable lock and boost, otherwise move the leg
@@ -63,12 +75,20 @@ public class Leg : Appendage
                     j.useLimits = true;
                 }
             }
+            sr.enabled = true;
+
+            toggleCount += 1;
+            if (toggleCount == 10)
+            {
+                sr.flipX = !sr.flipX;
+                toggleCount = 0;
+            }
             foot.AddRelativeForce(Vector3.up * 500);
             firstThrustFlag = false;
         } else
         {
-            
 
+            sr.enabled = false;
             foreach (HingeJoint2D j in hipJoints)
             {
                 j.useLimits = false;

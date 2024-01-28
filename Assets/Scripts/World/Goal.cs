@@ -16,8 +16,12 @@ public class Goal : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             var child = transform.GetChild(i);
+            Debug.Log(child.name);
             if (!child.name.Contains("Target"))
+            {
+                Debug.Log($"{child.name} unparented");
                 child.SetParent(null);
+            }
         }
 
         _arena.AddNewObstacle();
