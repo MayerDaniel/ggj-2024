@@ -32,9 +32,8 @@ public class GameManager : MonoBehaviour
     {
         if (initialized)
             return;
-            
+
         initialized = true;
-        objectList.Enqueue(null);
         objectList.Enqueue(leftHand);
         objectList.Enqueue(rightFoot);
         objectList.Enqueue(rightHand);

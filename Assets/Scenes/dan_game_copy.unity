@@ -941,9 +941,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 965326951324339483, guid: 526c72034a246e3468869098018966e8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
     - target: {fileID: 973371252889170062, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372918351731451046, guid: 526c72034a246e3468869098018966e8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 1610114902767955444, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_LocalScale.y
@@ -980,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 3081534825440853792, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_Name
       value: Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235647638573571906, guid: 526c72034a246e3468869098018966e8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 4426715994891390944, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -1096,6 +1108,10 @@ PrefabInstance:
     - target: {fileID: 7449299027353852810, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079310743494518247, guid: 526c72034a246e3468869098018966e8, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 8988032788756795300, guid: 526c72034a246e3468869098018966e8, type: 3}
       propertyPath: m_ConnectedAnchor.y
