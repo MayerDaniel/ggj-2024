@@ -24,7 +24,10 @@ public class PlayerManager : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        playerObject.callableUpdate(value.Get<Vector3>(), false);
+        Debug.Log($"{playerObject == null} {value == null}");
+
+        if (playerObject != null)
+            playerObject.callableUpdate(value.Get<Vector2>(), false);
     }
 
     // Update is called once per frame

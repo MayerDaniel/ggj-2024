@@ -29,7 +29,7 @@ public class Leg : Appendage
     }
 
     // Update is called once per frame
-    override public void callableUpdate(Vector3 vec, bool fire)
+    override public void callableUpdate(Vector2 vec, bool fire)
     {
 
         Debug.Log("got to called update");
@@ -80,7 +80,7 @@ public class Leg : Appendage
                 j.useLimits = false;
             }
 
-            
+            Debug.Log($"Adding force {vec}");
             foot.AddForce(vec);
             firstThrustFlag = true;
 
