@@ -37,6 +37,7 @@ public class Leg : Appendage
 
         if (fire)
         {
+            Debug.Log("Leg Fire");
             thrustFlag = !thrustFlag;
         }
 
@@ -62,7 +63,7 @@ public class Leg : Appendage
                     j.useLimits = true;
                 }
             }
-            foot.AddRelativeForce(Vector3.up * 20);
+            foot.AddRelativeForce(Vector3.up * 500);
             firstThrustFlag = false;
         } else
         {
