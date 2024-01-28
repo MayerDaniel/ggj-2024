@@ -1,16 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
     public enum HookState { Retracted, Shooting, Grabbed, ReelingIn };
 
+    [Header("Robot Parts References")]
+    [SerializeField] private Transform _wrist;
+    [SerializeField] private Transform _elbow;
+
     [Header("Hook Parts")]
     [SerializeField] private Transform _origin;
     [SerializeField] private Transform _rope;
     [SerializeField] private Transform _hook;
-    [SerializeField] private Rigidbody2D _originRb;
+    [SerializeField] private Rigidbody2D _pullThis;
     [SerializeField] private Rigidbody2D _hookRb;
 
     [Header("Gameplay")]
@@ -19,18 +22,27 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private float _accuracy;
 
     [Header("Game State")]
-    [SerializeField] private HookState _state = HookState.Retracted;
+    private HookState _state = HookState.Retracted;
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(ShootHook());
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (_state == HookState.Retracted)
+                ShootHook();
+            else
+                RetractHook();
+        }
     }
 
-    private IEnumerator ShootHook()
+    public void ShootHook()
     {
-        if (_state != HookState.Retracted)
-            yield break;
+        if (_state == HookState.Retracted)
+            StartCoroutine(ShootHook_Co());
+    }
 
+    private IEnumerator ShootHook_Co()
+    {
         _rope.gameObject.SetActive(true);
         _hook.gameObject.SetActive(true);
         _rope.SetParent(null);
@@ -38,18 +50,13 @@ public class GrapplingHook : MonoBehaviour
         _hook.position = _origin.position;
 
         _state = HookState.Shooting;
-        var angle = _origin.transform.localEulerAngles.z * Mathf.Deg2Rad;
-        var dir = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+        var dir = (_wrist.position - _elbow.position).normalized;
 
         _hookRb.velocity = dir * _hookShootSpeed;
 
-        while (true)
+        while (_state == HookState.Shooting)
         {
             UpdateRope();
-
-            if (_state == HookState.Grabbed)
-                break;
-
             yield return null;
         }
     }
@@ -69,11 +76,14 @@ public class GrapplingHook : MonoBehaviour
         _state = HookState.ReelingIn;
 
         float time = 0;
-        while (Vector3.Distance(_origin.position, _hook.position) > _accuracy)
+        float startDist = Vector3.Distance(_origin.position, _hook.position);
+
+        while (Vector3.Distance(_origin.position, _hook.position) > _accuracy && _state == HookState.ReelingIn)
         {
+            float prog = Vector3.Distance(_origin.position, _hook.position) / startDist;
             var dir = (_hook.position - _origin.position).normalized;
-            var force = time * _pullIntensity * dir;
-            _originRb.AddForce(force);
+            var force = time * _pullIntensity * prog * dir;
+            _pullThis.AddForce(force);
             UpdateRope();
 
             time += Time.deltaTime;

@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7797101697558803774
 Transform:
   m_ObjectHideFlags: 0
@@ -162,6 +162,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hookManager: {fileID: 7475535192121311908}
+--- !u!1 &4895564058751184154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522458754025703008}
+  m_Layer: 10
+  m_Name: Wrist Reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522458754025703008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895564058751184154}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904876340298153171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6315051623851725329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2508644133205119052}
+  m_Layer: 10
+  m_Name: Elbow Reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2508644133205119052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315051623851725329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 904876340298153171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7469727572308321380
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3521342050043844778
 Transform:
   m_ObjectHideFlags: 0
@@ -327,6 +389,8 @@ Transform:
   m_Children:
   - {fileID: 3521342050043844778}
   - {fileID: 7797101697558803774}
+  - {fileID: 522458754025703008}
+  - {fileID: 2508644133205119052}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!212 &1074714494008224459
@@ -455,12 +519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c95e644199ff2439e2ec879158e864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wrist: {fileID: 522458754025703008}
+  _elbow: {fileID: 2508644133205119052}
   _origin: {fileID: 904876340298153171}
   _rope: {fileID: 3521342050043844778}
   _hook: {fileID: 7797101697558803774}
-  _originRb: {fileID: 1615150148440701676}
+  _pullThis: {fileID: 0}
   _hookRb: {fileID: 8985097863257937220}
   _hookShootSpeed: 10
-  _pullIntensity: 10
-  _accuracy: 0.25
-  _state: 0
+  _pullIntensity: 250
+  _accuracy: 0.5
