@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     int playerCount = 0;
+    private bool initialized;
 
     [SerializeField]
     Appendage rightHand;
@@ -22,8 +23,17 @@ public class GameManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        Initialize();
+    }
+
+    void Initialize()
+    {
+        if (initialized)
+            return;
+
+        initialized = true;
         objectList.Enqueue(rightFoot);
         objectList.Enqueue(leftFoot);
         objectList.Enqueue(rightHand);
@@ -40,6 +50,9 @@ public class GameManager : MonoBehaviour
     // registers a player when a new controller is plugged in, and returns the position of the 
     public Appendage registerPlayer()
     {
+        if (!initialized)
+            Initialize();
+
         Debug.Log("Player Registered");
         return objectList.Dequeue();
     }

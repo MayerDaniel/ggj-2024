@@ -18,14 +18,19 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player is null :(");
         }
+        StartCoroutine(Update_Co());
     }
 
     // Update is called once per frame
-    void Update()
+    private IEnumerator Update_Co()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        Vector3 tempVect = new Vector3(h, v, 0);
-        playerObject.callableUpdate(tempVect, Input.GetButtonDown("Fire1"));
+        while (true)
+        {
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+            Vector3 tempVect = new Vector3(h, v, 0);
+            playerObject.callableUpdate(tempVect, Input.GetButtonDown("Fire1"));
+            yield return null;
+        }
     }
 }
