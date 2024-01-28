@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2724610828449320007}
   - component: {fileID: 5685912114606294634}
   m_Layer: 10
-  m_Name: Grappling Rope
+  m_Name: Grappling Hook Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

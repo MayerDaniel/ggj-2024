@@ -914,7 +914,7 @@ MonoBehaviour:
   _minDiameter: 5
   _maxDiameter: 30
   _timeBetweenEnemySpawns: 15
-  _enemySize: 0.3
+  _enemySize: 1
 --- !u!4 &2009526834
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,9 @@ public class GunSword : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Enemy>() != null)
-            Destroy(collision.gameObject);
+        {
+            DestroyEnemy(collision.gameObject);
+        }
     }
 
     public void OnFirePressed()
@@ -28,5 +30,15 @@ public class GunSword : MonoBehaviour
         var bullet = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
         var dir = (_bulletSpawnPoint.position - transform.position).normalized;
         bullet.GetComponent<Rigidbody2D>().velocity = _bulletSpeed * dir;
+    }
+
+    public static void DestroyEnemy(GameObject enemy)
+    {
+        for (int i = 0; i < enemy.transform.childCount; i++)
+        {
+            var child = enemy.transform.GetChild(i);
+            if (child.name.Contains("ook"))
+                child.SetParent(null);
+        }
     }
 }
