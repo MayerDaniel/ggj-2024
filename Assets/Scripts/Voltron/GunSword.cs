@@ -30,6 +30,7 @@ public class GunSword : MonoBehaviour
         var bullet = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, Quaternion.identity);
         var dir = (_bulletSpawnPoint.position - transform.position).normalized;
         bullet.GetComponent<Rigidbody2D>().velocity = _bulletSpeed * dir;
+        bullet.transform.eulerAngles = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg * Vector3.forward;
     }
 
     public static void DestroyEnemy(GameObject enemy)
