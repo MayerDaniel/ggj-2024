@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
 {
 
     Appendage playerObject;
+    Vector2 inputVector = Vector2.zero;
+    bool fire = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +26,19 @@ public class PlayerManager : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        Debug.Log($"{playerObject == null} {value == null}");
-
-        if (playerObject != null)
-            playerObject.callableUpdate(value.Get<Vector2>(), false);
+        inputVector = value.Get<Vector2>();
     }
 
-    // Update is called once per frame
-    //private IEnumerator Update_Co()
-    //{
-    //    while (true)
-    //    {
-    //        float h = Input.GetAxis("Horizontal");
-    //        float v = Input.GetAxis("Vertical");
-    //        Vector3 tempVect = new Vector3(h, v, 0);
-    //        playerObject.callableUpdate(tempVect, Input.GetButtonDown("Fire1"));
-    //        yield return null;
-    //    }
-    //}
+    public void OnFire(InputValue value)
+    {
+        fire = !fire;
+    }
+
+    private void Update()
+    { 
+        if (playerObject != null)
+            playerObject.callableUpdate(inputVector, fire);
+    }
+
+    
 }

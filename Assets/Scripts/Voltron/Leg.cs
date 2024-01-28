@@ -32,8 +32,6 @@ public class Leg : Appendage
     override public void callableUpdate(Vector2 vec, bool fire)
     {
 
-        Debug.Log("got to called update");
-
         hipJoints = hip.GetComponents<HingeJoint2D>();
         kneeJoints = knee.GetComponents<HingeJoint2D>();
 
@@ -80,8 +78,7 @@ public class Leg : Appendage
                 j.useLimits = false;
             }
 
-            Debug.Log($"Adding force {vec}");
-            foot.AddForce(vec);
+            foot.AddForce(vec * 10);
             firstThrustFlag = true;
 
         }
