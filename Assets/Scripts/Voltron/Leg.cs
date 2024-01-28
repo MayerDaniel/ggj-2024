@@ -28,7 +28,7 @@ public class Leg : Appendage
         
     }
 
-    // Update is called once per frame
+    // Leg update - toggleable lock and boost, otherwise move the leg
     override public void callableUpdate(Vector2 vec, bool fire)
     {
 
