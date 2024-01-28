@@ -98,7 +98,8 @@ public class Arena : MonoBehaviour
     {
         var diameter = Random.Range(_minDiameter, _maxDiameter);
         var newObstacle = new Obstacle(Vector2.zero, diameter / 2f);
-        PlaceNewObstacle(newObstacle, prefab, Vector2.one * diameter);
+        var obstacleObj = PlaceNewObstacle(newObstacle, prefab, Vector2.one * diameter);
+        obstacleObj.transform.eulerAngles = Random.Range(0, 360f) * Vector3.forward;
     }
 
     private void AddNewBlockObstacle(GameObject prefab)
@@ -110,14 +111,15 @@ public class Arena : MonoBehaviour
         PlaceNewObstacle(newObstacle, prefab, size);
     }
 
-    private void PlaceNewObstacle(Obstacle newObstacle, GameObject prefab, Vector2 size)
+    private GameObject PlaceNewObstacle(Obstacle newObstacle, GameObject prefab, Vector2 size)
     {
         if (!GetObstaclePos(newObstacle, _minDistBetweenObstacles).HasValue)
-            return;
+            return null;
 
         var blockObj = Instantiate(prefab, newObstacle.Data.Center, Quaternion.identity);
         blockObj.transform.localScale = new Vector3(size.x, size.y, 1);
         _obstacles.Add(newObstacle);
+        return blockObj;
     }
 
     private Vector2? GetObstaclePos(Obstacle obstacle, float minDist)
