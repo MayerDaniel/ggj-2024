@@ -254,6 +254,7 @@ public class Arena : MonoBehaviour
             if (GetObstaclePos(enemyObstacle, 0).HasValue)
             {
                 var enemy = Instantiate(_enemyPrefab, enemyObstacle.Data.Center, Quaternion.identity);
+                enemy.GetComponent<Enemy>().Assign(_voltron);
             }
         }
     }

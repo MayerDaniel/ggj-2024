@@ -16,9 +16,9 @@ public class Enemy : MonoBehaviour
 
     private float RandomVariance => Random.Range(_minVariance, _maxVariance);
 
-    private void Start()
+    public void Assign(Transform target)
     {
-        _target = FindObjectOfType<TestPlayer>().transform;
+        _target = target;
         _thrustFrequency *= RandomVariance;
         _thrustAmount *= RandomVariance;
         _linearDrag *= RandomVariance;
