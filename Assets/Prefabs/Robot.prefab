@@ -771,7 +771,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.55}
-  m_ConnectedAnchor: {x: 0, y: 0.5599998}
+  m_ConnectedAnchor: {x: 0, y: 0.56}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1139,7 +1139,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.5, y: 0}
+  m_ConnectedAnchor: {x: -0.4999999, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1349,7 +1349,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.5, y: 0}
-  m_ConnectedAnchor: {x: 0.5, y: 0}
+  m_ConnectedAnchor: {x: 0.50000006, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1794,8 +1794,8 @@ GameObject:
   - component: {fileID: 4067623663090362235}
   - component: {fileID: 8571659984953044407}
   - component: {fileID: 7996306692905050867}
-  - component: {fileID: 2396871793776752564}
   - component: {fileID: 1017821561885026639}
+  - component: {fileID: 3822003271739640845}
   m_Layer: 9
   m_Name: hand_left
   m_TagString: Untagged
@@ -1957,23 +1957,6 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
---- !u!114 &2396871793776752564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3180167194014065339}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc03c214163c45959d723022e045e21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foot: {fileID: 8571659984953044407}
-  hip: {fileID: 2572538609327904651}
-  knee: {fileID: 4602231390387244277}
-  kneeJoints: []
-  hipJoints: []
 --- !u!255 &1017821561885026639
 FixedJoint2D:
   m_ObjectHideFlags: 0
@@ -1993,6 +1976,20 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: -0.33333334, y: 0.0033330917}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &3822003271739640845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3180167194014065339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4758c2b00ef2492cbf3570653f8309b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 8571659984953044407}
+  hook: {fileID: 4703495265259186876}
 --- !u!1 &4441652503289124785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,8 +4172,8 @@ GameObject:
   - component: {fileID: 7732422805812289421}
   - component: {fileID: 1560751764933977921}
   - component: {fileID: 7343978244561710891}
-  - component: {fileID: 1622366960549084988}
   - component: {fileID: 5415532709435005234}
+  - component: {fileID: 5426034717086391927}
   m_Layer: 9
   m_Name: hand_right
   m_TagString: Untagged
@@ -4338,23 +4335,6 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
---- !u!114 &1622366960549084988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792369345731120134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc03c214163c45959d723022e045e21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foot: {fileID: 1560751764933977921}
-  hip: {fileID: 2572538609327904651}
-  knee: {fileID: 4602231390387244277}
-  kneeJoints: []
-  hipJoints: []
 --- !u!255 &5415532709435005234
 FixedJoint2D:
   m_ObjectHideFlags: 0
@@ -4374,6 +4354,20 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0.29166666, y: 0.0033330917}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &5426034717086391927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792369345731120134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb8e617ca84b4d35b2f67ffcbb1f516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 1560751764933977921}
+  gun: {fileID: 5792356039542772721}
 --- !u!1 &8685581542980421921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,6 +4775,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 904876340298153171, guid: 83e1f2bc924e1dc41a685e2faecc193a, type: 3}
   m_PrefabInstance: {fileID: 2808068724166486040}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4703495265259186876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7475535192121311908, guid: 83e1f2bc924e1dc41a685e2faecc193a, type: 3}
+  m_PrefabInstance: {fileID: 2808068724166486040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c95e644199ff2439e2ec879158e864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8517343124369608439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4843,3 +4848,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8662595787480431030, guid: be2f59e87f9c9ba49b1af9867bc11eb5, type: 3}
   m_PrefabInstance: {fileID: 8517343124369608439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5792356039542772721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2761053266365357318, guid: be2f59e87f9c9ba49b1af9867bc11eb5, type: 3}
+  m_PrefabInstance: {fileID: 8517343124369608439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeaeed4a9e475646bfba1e9d0d641bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -31,13 +31,17 @@ public class PlayerManager : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        fire = !fire;
+        fire = true;
     }
 
     private void Update()
     { 
         if (playerObject != null)
+        {
             playerObject.callableUpdate(inputVector, fire);
+            fire = false;
+        }
+            
     }
 
     

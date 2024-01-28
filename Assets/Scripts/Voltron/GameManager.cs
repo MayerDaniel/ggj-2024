@@ -34,10 +34,11 @@ public class GameManager : MonoBehaviour
             return;
 
         initialized = true;
-        objectList.Enqueue(rightFoot);
-        objectList.Enqueue(leftFoot);
-        objectList.Enqueue(rightHand);
         objectList.Enqueue(leftHand);
+        objectList.Enqueue(rightFoot);
+        objectList.Enqueue(rightHand);
+        objectList.Enqueue(leftFoot);
+        
         
     }
 
