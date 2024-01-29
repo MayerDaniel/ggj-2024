@@ -2567,6 +2567,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e6f9627b2bc7244a73cc923366a178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turnTheseRed:
+  - {fileID: 4890339949071796440}
+  - {fileID: 5180044927390278076}
+  - {fileID: 7576230177023483594}
+  - {fileID: 1711206461453152609}
+  - {fileID: 8688421066306084843}
+  - {fileID: 8863994906998766234}
+  _stunTime: 3
+  _grapplingHook: {fileID: 4703495265259186876}
 --- !u!1 &4602231390387244277
 GameObject:
   m_ObjectHideFlags: 0

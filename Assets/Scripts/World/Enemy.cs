@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AudioSource _audioSource;
 
     [Header("Sprites")]
     [SerializeField] private Sprite _sadSprite;
@@ -50,6 +51,7 @@ public class Enemy : MonoBehaviour
         var dir = (_isRetreating ? transform.position - _target.position : 
             _target.position - transform.position).normalized;
         _rb.AddForce(_thrustAmount * dir);
+        _audioSource.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

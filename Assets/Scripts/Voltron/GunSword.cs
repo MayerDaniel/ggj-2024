@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunSword : MonoBehaviour
 {
+    [SerializeField] private AudioSource _source;
+
     [Header("Gun")]
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnPoint;
@@ -21,6 +23,7 @@ public class GunSword : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Enemy>() != null)
         {
+            _source.Play();
             DestroyEnemy(collision.gameObject);
         }
     }

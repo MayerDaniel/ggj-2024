@@ -100,7 +100,7 @@ public class GrapplingHook : MonoBehaviour
         RetractHook();
     }
 
-    private void RetractHook()
+    public void RetractHook()
     {
         _state = HookState.Retracted;
         _rope.SetParent(_origin);

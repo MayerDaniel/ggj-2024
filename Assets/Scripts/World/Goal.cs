@@ -6,6 +6,7 @@ public class Goal : MonoBehaviour
 {
     [Header("External")]
     [SerializeField] private Arena _arena;
+    [SerializeField] private AudioSource _source;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +25,7 @@ public class Goal : MonoBehaviour
             }
         }
 
+        _source.Play();
         _arena.AddNewObstacle();
         _arena.PlaceGoal();
     }
