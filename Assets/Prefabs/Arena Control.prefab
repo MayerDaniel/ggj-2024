@@ -66,4 +66,4 @@ MonoBehaviour:
   _minDiameter: 5
   _maxDiameter: 30
   _timeBetweenEnemySpawns: 15
-  _enemySize: 1
+  _enemySize: 4

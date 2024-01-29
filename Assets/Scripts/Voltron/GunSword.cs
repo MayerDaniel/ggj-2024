@@ -42,6 +42,6 @@ public class GunSword : MonoBehaviour
                 child.SetParent(null);
         }
 
-        Destroy(enemy);
+        enemy.GetComponent<Enemy>().OnGetHit();
     }
 }
