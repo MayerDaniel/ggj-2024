@@ -57,7 +57,9 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.transform.parent != null && collision.gameObject.transform.parent.name.Contains("Robot"))
+        if (_state == EnemyState.Attacking &&
+            collision.gameObject.transform.parent != null && 
+            collision.gameObject.transform.parent.name.Contains("Robot"))
         {
             _target.GetComponent<EnemyDamageManager>().OnGetHit();
             _isRetreating = true;
